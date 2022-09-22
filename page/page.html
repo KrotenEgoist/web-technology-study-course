@@ -60,7 +60,7 @@
          <label for="album_id">Album_id:</label>
          <input type="text" id="album_id">
       </p>
-      <button type="submit" onclick="getPhoto()">Отправить</button>
+      <button id="getPhoto" type="submit">Отправить</button>
       <p id="demo"></p>
       <img id="img" src="">
       <script>
@@ -103,6 +103,10 @@
            document.getElementById("owner_id").value = owner_id;
            document.getElementById("album_id").value = album_id;
           }
+           document.getElementById("getPhoto")
+         .addEventListener("click", () =>{
+             getPhoto()
+        })
       </script>
    </body>
 </html>
