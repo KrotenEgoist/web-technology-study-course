@@ -106,7 +106,11 @@
            document.getElementById("getPhoto")
          .addEventListener("click", () =>{
              getPhoto()
-        })
+             .then((response) =>
+                {console.log("success");})
+            .catch((error)   =>
+                {console.error(error)});
+         })
       </script>
    </body>
 </html>
