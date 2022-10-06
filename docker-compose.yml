@@ -16,3 +16,6 @@ services:
       - ./flaskapp/templates:/usr/share/nginx/html
     ports:
       - "80:80"
+    links:
+      - flask
+
