@@ -1,0 +1,21 @@
+version: '3'
+services:
+  flask:
+    build: ./flaskapp
+    container_name: backend-flask
+    restart: on-failure
+    volumes:
+      - ./flaskapp:/flaskapp
+    ports:
+      - "5000"
+    command: python3 myapp.py
+  nginx:
+    image: nginx:latest
+    container_name: html
+    volumes:
+      - ./flaskapp/templates:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    links:
+      - flask
