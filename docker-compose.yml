@@ -7,7 +7,7 @@ services:
     volumes:
       - ./flaskapp:/flaskapp
     ports:
-      - "5000:5000"
+      - "5000"
     command: python3 myapp.py
   nginx:
     image: nginx:latest
