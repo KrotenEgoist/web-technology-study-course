@@ -1,19 +1,28 @@
 version: '3'
 services:
-  flask:
-    build: ./flaskapp
-    container_name: backend-flask
+#  flask:
+#   build: ./flaskapp
+#   container_name: backend-flask
+#   restart: on-failure
+#   volumes:
+#   - ./flaskapp:/flaskapp
+#   command: python3 myapp.py
+  go:
+    build: ./goapp
+    container_name: backend-go
     restart: on-failure
     volumes:
-      - ./flaskapp:/flaskapp
-    command: python3 myapp.py
+      - ./goapp:/goapp
+    command: go run server.go
   nginx:
     image: nginx:latest
     container_name: html
     volumes:
-      - ./flaskapp/templates:/usr/share/nginx/html
+#     - ./flaskapp/templates:/usr/share/nginx/html
+      - ./goapp/static:/usr/share/nginx/html
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "80:80"
     links:
-      - flask
+#     - flask
+      - go
