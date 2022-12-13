@@ -4,12 +4,12 @@ import redis
 from circuitbreaker import circuit
 from healthcheck import HealthCheck
 
-
+@circuit
 def redis_correct():
     redis_ = redis.Redis(connection_pool=pool)
 
 
-@circuit
+
 def set_pool():
     return redis.ConnectionPool(host='localhost', port=6379, db=0)
 
